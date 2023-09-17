@@ -9,23 +9,20 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        sh 'docker build -t devilpk/laravel_web .'
+        sh 'docker build -t devilpk/jenkins-docker-hub .'
       }
     }
-
     stage('Login') {
       steps {
         sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
       }
     }
-
     stage('Push') {
       steps {
-        sh 'docker push devilpk/laravel_web'
+        sh 'docker push devilpk/jenkins-docker-hub'
       }
     }
   }
-
   post {
     always {
       sh 'docker logout'
