@@ -9,7 +9,7 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        sh 'docker build -t lloydmatereke/jenkins-docker-hub .'
+        sh 'docker build -t devilpk/laravel_web .'
       }
     }
 
@@ -21,11 +21,11 @@ pipeline {
 
     stage('Push') {
       steps {
-        sh 'docker push lloydmatereke/jenkins-docker-hub'
+        sh 'docker push devilpk/laravel_web'
       }
     }
   }
-  
+
   post {
     always {
       sh 'docker logout'
