@@ -1,7 +1,3 @@
-def remote = [:]
-remote.name = 'root'
-remote.host = '188.166.233.163'
-remote.allowAnyHosts = true
 
 pipeline {
   agent any
@@ -30,12 +26,16 @@ pipeline {
     stage('Push') {
       steps {
         sh 'docker push devilpk/jenkins-docker-hub'
+        sh "docker rmi devilpk/jenkins-docker-hub"
+        sh "docker rmi devilpk/jenkins-docker-hub"
       }
     }
     stage('Deploy'){
       steps{
-        sh 'cd ..'
-        sh 'ls -l'
+        withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId:'DOIkhody', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD']]) {
+          sh 'ssh username@143.198.86.97 "commands to execute"'
+          sh 'ls -l'
+        }
       }
     }
   }
