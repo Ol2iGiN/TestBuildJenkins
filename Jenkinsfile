@@ -26,8 +26,6 @@ pipeline {
     stage('Push') {
       steps {
         sh 'docker push devilpk/jenkins-docker-hub'
-        sh "docker rmi devilpk/jenkins-docker-hub"
-        sh "docker rmi devilpk/jenkins-docker-hub"
       }
     }
     stage('Deploy'){
