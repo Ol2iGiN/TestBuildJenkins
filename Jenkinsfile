@@ -31,7 +31,7 @@ pipeline {
     stage('Deploy'){
       steps{
         withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId:'DOIkhody', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD']]) {
-          sh 'ssh username@143.198.86.97 "commands to execute"'
+          sh 'ssh root@143.198.86.97 "commands to execute"'
           sh 'ls -l'
         }
       }
