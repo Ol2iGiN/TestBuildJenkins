@@ -7,6 +7,11 @@ pipeline {
     DOCKERHUB_CREDENTIALS = credentials('dockerhub')
   }
   stages {
+    stage('checkout') {
+      steps {
+        checkout scm
+      }
+    }
     stage('Build') {
       steps {
         sh 'docker build -t devilpk/jenkins-docker-hub .'
