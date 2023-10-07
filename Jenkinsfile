@@ -34,7 +34,7 @@ pipeline {
     }
     stage('Deploy'){
       steps{
-        sh 'cd /root/workspace/'
+        sh 'cd /root'
         sh 'ls -l'
       }
     }
