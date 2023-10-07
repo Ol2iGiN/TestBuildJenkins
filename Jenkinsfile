@@ -1,3 +1,8 @@
+def remote = [:]
+remote.name = 'root'
+remote.host = '188.166.233.163'
+remote.allowAnyHosts = true
+
 pipeline {
   agent any
   options {
@@ -25,6 +30,11 @@ pipeline {
     stage('Push') {
       steps {
         sh 'docker push devilpk/jenkins-docker-hub'
+      }
+    }
+    stage('Deploy'){
+      steps{
+        sh 'docker pull devilpk/jenkins-docker-hub:latest && docker tag devilpk/jenkins-docker-hub:latest'
       }
     }
   }
