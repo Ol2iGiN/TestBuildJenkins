@@ -34,7 +34,7 @@ pipeline {
     }
     stage('Deploy'){
       steps{
-        sh 'docker pull devilpk/jenkins-docker-hub:latest && docker tag devilpk/jenkins-docker-hub:latest'
+        sh 'docker pull devilpk/jenkins-docker-hub:main-latest && docker tag devilpk/jenkins-docker-hub:main-latest jenkins-docker-hub'
       }
     }
   }
